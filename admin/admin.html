@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin page</title>
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <header>
+        <div class="back">Back</div>
+        Ruruw Resto
+        <span class="burger material-symbols-outlined">
+            menu
+        </span>       
+    </header>
+    <main>
+        <div id="main-panel">
+            <!--
+            <p id="main-title">Categories > Add Category</p>
+            <div id="main-content">
+            -->
+            </div>
+        </div>
+        <div id="admin-panel" class="">
+            <div class="a-p-header">
+                <span class="material-symbols-outlined">
+                    mood
+                </span>
+                Admin
+            </div>
+            <div class="a-p-items">
+                <div class="a-p-i-head cp">
+                    <span class="material-symbols-outlined">
+                        dashboard
+                    </span>
+                    Dashboard
+                </div>
+            </div>
+            <div class="a-p-items">
+                <div class="a-p-i-head cp">
+                    <span class="material-symbols-outlined">
+                        category
+                    </span>
+                        Categories
+                    <span class="down material-symbols-outlined">
+                            arrow_drop_down
+                    </span>
+                </div>
+                
+                <ul class="item-child">
+                    <div class="a-p-i-child cp" id="category-list">Categories List</div>
+                    <div class="a-p-i-child cp" id="category-add">Add New Category</div>
+                    <div class="a-p-i-child cp" id="category-edit">Edit Category</div>
+                </ul>
+            </div>
+            <div class="a-p-items">
+                <div class="a-p-i-head cp">
+                    <span class="material-symbols-outlined">
+                        fastfood
+                    </span>
+                        Product
+                    <span class="down material-symbols-outlined">
+                            arrow_drop_down
+                    </span>
+                </div>
+                <ul class="item-child">
+                    <div class="a-p-i-child cp" id="product-list">Product List</div>
+                    <div class="a-p-i-child cp" id="product-add">Add New Product</div>
+                    <div class="a-p-i-child cp" id="product-edit">Edit Product</div>
+                </ul>                
+            </div>
+            <div class="a-p-items">
+                <div class="a-p-i-head cp">
+                    <span class="material-symbols-outlined">
+                        history
+                    </span>
+                    Order Data
+                </div>
+            </div>
+            <div class="a-p-items">
+                <div class="a-p-i-head cp">
+                    <span class="material-symbols-outlined">
+                        monitoring
+                    </span>
+                    Sales
+                </div>
+               
+            </div>
+        </div>
+    </main>
+    <script src="script/ShowAdminPanel.js"></script>
+    <script type="module" src="script/NavigateClick.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.back').click(() => {
+                window.location.href = "/index.html";
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+    background-color: #F9E0BB;
+    position: relative;
+    overflow: hidden;
+}
+header{
+    width: 100%;
+    height: 50px;
+    background-color: #884A39;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+    border-bottom: 4px solid #522a1f;
+    color: white;
+}
+.back{
+    width: 40px;
+    height: 24px;
+    cursor: pointer;
+    position: absolute;
+    left: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.back:hover{
+    transform: scale(1.1);
+}
+main{
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding: 20px;
+    width: 100%;
+    height: calc(100% - 50px - 40px);
+    position: relative;
+}
+#m-container, #order-container{
+    background-color: #884a392f;
+    height: 100%;
+}
+#m-container{
+    width: 75%;
+}
+#m-header{
+    width: 100%;
+    padding: 8px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #C38154;
+    border-bottom:4px solid #884A39;
+    position: relative;
+}
+select{
+    position: absolute;
+    right: 24px;
+}
+#m-list{
+    margin: 8px 0;
+    width: 100%;
+    height: calc(100% - 76px);
+    padding: 0 8px;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-gap: 10px;
+    align-content: start;
+}
+.list{
+    cursor: pointer;
+    height: 160px;
+    min-width: 80px;
+    background-color: #884a393d;
+    position: relative;
+}
+.list-name{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 48px;
+    background-color: #884a39a6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.1s ease;
+}
+.list-name p{
+    text-overflow: ellipsis;
+    max-width: 60%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.list-name:hover{
+    height: 100%;
+}
+#order-container{
+    width:25%;
+    min-width: 360px;
+    
+}
+#o-header{
+    position: relative;
+    padding: 8px;
+    width: 100%;
+    height: 80px;
+    background-color: #C38154;
+    border-bottom:4px solid #884A39;
+}
+#order-id, #order-count{
+    font-size: 11px;
+}
+#total-price{
+    position: absolute;
+    bottom: 8px;
+}
+#o-delete{
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    cursor: pointer;
+}
+#process{
+    position: absolute;
+    right: 8px;
+    bottom:8px;
+    height: 24px;
+    width: 72px;
+}
+#toggle{
+    display: none;
+    padding: 4px 4px 4px;
+    position: absolute;
+    bottom: -36px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #884A39;
+    border-radius: 0 0 10px 10px;
+    cursor: pointer;
+}
+#o-list{
+    width: 100%;
+    height: calc(100% - 80px);
+    background-color: rgb(0,0,0,0.3);
+}
+footer{
+    width: 100%;
+    height: 40px;
+    background-color: #522a1f;
+    position: absolute;
+    bottom: 0;
+}
+@media only screen and (max-width: 1520px){
+    #m-list{
+        grid-template-columns: repeat(6,1fr);
+    }
+}
+@media only screen and (max-width: 1280px){
+    #m-list{
+        grid-template-columns: repeat(5,1fr);
+    }
+}
+@media only screen and (max-width: 1152px){
+    #m-list{
+        grid-template-columns: repeat(4,1fr);
+    }
+}
+@media only screen and (max-width: 1024px){
+    #m-list{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+@media only screen and (max-width: 824px) {
+    main{
+        flex-direction: column-reverse;
+        padding: 10px 15px;
+    }
+    #m-container{
+        width: 100%;
+        height: calc(100% - 94px)
+    }
+    #order-container{
+        width: calc(100%);
+        height: 80px;
+        background-color: rgba(0, 0, 255, 0.123);
+    }
+    #toggle{
+        display: block;
+    }
+    #m-list{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .list{
+        height: 120px;
+    }
+    .list-name{
+        height: 100%;
+        width: 160px;
+        right: 0;
+    }
+    .list-name:hover{
+        width: 100%;
+    }
+}
