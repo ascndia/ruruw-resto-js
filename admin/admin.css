@@ -71,6 +71,41 @@ main{
     height: 100%;
     background-color: #884a392c;
     position: relative;
+    padding: 8px;
+}
+#content-header{
+    width: 100%;
+    height: 28px;
+    color: #522a1f;
+    font-size: large;
+    
+}
+#content{
+    width: 100%;
+    height: calc(100% - 28px);
+}
+.c-list{
+    position: relative;
+    min-height: 60px;
+    width: 100%;
+    background-color: #884a3956;
+    display: flex;
+    align-items: center;
+}
+.c-list div{
+    max-width: 70%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: absolute;
+    left: 16px;
+    color: #522a1f;
+}
+.c-list p{
+    font-size: medium;
+    position: absolute;
+    color: #522a1f;
+    right: 16px;
 }
 .btn{
     border: 4px solid #884A39;

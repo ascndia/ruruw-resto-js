@@ -1,8 +1,7 @@
 import * as Add from "./CategoryAdd.js";
 
 let panel = $('#main-panel');
-let data = localStorage.getItem('menu');
-data = data ? JSON.parse(data): [];
+
 
 export function RenderCategoryList(){  
 
@@ -16,6 +15,9 @@ export function RenderCategoryList(){
     let main = $('<div>');
     main.attr('id','main-content');
     panel.append(main);
+
+    let data = localStorage.getItem('menu');
+    data = data ? JSON.parse(data): []; 
 
     if(data.length == 0){
         var m = $('<p>');
@@ -36,7 +38,39 @@ export function RenderCategoryList(){
             'font-size': '1.2rem'
         })
     } else {
+        let header = $('<p>');
+        header.text(`Category count : ${data.length}`);
+        header.attr('id','content-header');
+        main.append(header);
 
+        let content = $('<div>');
+        content.attr('id','content');
+        content.css({
+            'display':'flex',
+            'flex-direction':'column',
+            'justify-content':'flex-start',
+            'align-items':'center',
+            'gap':'16px',
+            'overflow':'auto'
+        });
+        data.forEach(element => {
+            let li = $('<div>');
+            li.addClass('c-list');
+
+            let a = $('<div>');
+
+            let h2 = $('<h1>');
+            h2.text(element.name);
+            a.append(h2);
+            li.append(a);
+            let p = $('<p>');
+            p.text(`${element.items.length} items`)
+            li.append(p);
+            content.append(li)
+        });
+        main.append(content);
+
+        
     }
 
 

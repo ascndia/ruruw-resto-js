@@ -1,3 +1,6 @@
+let data = localStorage.getItem('menu');
+data = data ? JSON.parse(data): [];
+
 export function AddCategory(){
     let name = $('#cadd-input').val();
     if(name == ""){
@@ -5,10 +8,12 @@ export function AddCategory(){
         return;
     }
     $('#cadd-input').val("");
-    console.log(name);
     let category = {};
     category.name = name;
     category.id = new Date().getTime();
     category.items = [];
-    console.log(category);
+    data.push(category);
+
+    localStorage.setItem('menu',JSON.stringify(data));
+    console.log(data);
 }

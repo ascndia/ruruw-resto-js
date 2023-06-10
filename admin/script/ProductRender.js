@@ -12,7 +12,6 @@ export function RenderProductList(){
     let main = $('<div>');
     main.attr('id','main-content');
     panel.append(main);
-
 }
 
 export function RenderProductAdd(){
