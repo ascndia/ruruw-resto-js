@@ -1,7 +1,8 @@
-let data = localStorage.getItem('menu');
-data = data ? JSON.parse(data): [];
 
 export function AddCategory(){
+    let data = localStorage.getItem('menu');
+    data = data ? JSON.parse(data): [];
+
     let name = $('#cadd-input').val();
     if(name == ""){
         alert("Please Fill Category Name");
@@ -15,5 +16,4 @@ export function AddCategory(){
     data.push(category);
 
     localStorage.setItem('menu',JSON.stringify(data));
-    console.log(data);
 }

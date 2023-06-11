@@ -113,13 +113,19 @@ main{
     color: white;
 }
 .c-list div{
-    max-width: 70%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: #522a1f;
+}
+.c-list div h1{
+    position: absolute;
+    left: 16px;
+    max-width: calc(100% - 100px);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    position: absolute;
-    left: 16px;
-    color: #522a1f;
 }
 .c-list p{
     font-size: medium;
@@ -160,7 +166,11 @@ main{
     border: 4px solid white;
 }
 #rc-content{
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
 }
 .c-e-list{
     cursor: pointer;
@@ -175,14 +185,29 @@ main{
     background-color: #F9E0BB;
     color: #522a1f;
     cursor: pointer;
+    
+}
+.btn:hover{
+    background-color: #e6ceab;
+
+}
+.btn-small{
+    min-width: 25%;
+}
+.btn-full{
+    min-width: 89%;
 }
 .inp{
+    position: relative;
     border: 4px solid #884A39;
-    padding: 4px;
+    padding: 4px 8px;
     min-width: 240px;
     min-height: 40px;
     background-color: #F9E0BB;
     color: #522a1f;
+}
+.inp-full{
+    min-width: 61%;
 }
 #admin-panel{
     z-index: 80;

@@ -1,4 +1,6 @@
 import * as Add from "./CategoryAdd.js";
+import * as Rmv from "./CategoryRemove.js";
+import * as Edit from "./CategoryEdit.js";
 
 let panel = $('#main-panel');
 let selectedcategories;
@@ -143,6 +145,24 @@ export function RenderCategoryEdit(){
 
     if(data.length == 0){
 
+        var m = $('<p>');
+        m.text('Category Empty..');
+        main.append($(m));
+
+        var button = $('<button>');
+        button.click(RenderCategoryAdd);
+        button.text('Add new category');
+        button.addClass('btn')
+        main.append(button);
+        main.css({
+            'display':'flex',
+            'gap':'16px',
+            'flex-direction':'column',
+            'justify-content':'center',
+            'align-items':'center',
+            'font-size': '1.2rem'
+        })
+
     } else {
         let header = $('<p>');
         header.text(`Category count : ${data.length}`);
@@ -174,7 +194,15 @@ export function RenderCategoryEdit(){
         l.append(lh);
 
         let rh = $('<header>');
-        rh.text('Category info');
+        if(selectedcategories == undefined){
+            rh.text('Category info');
+        } else {
+            let a = data.find(function(element){
+                return element.id == selectedcategories;
+            });
+            rh.text(`${a.name}`);
+        }
+        
         r.append(rh);
 
         let lc = $('<div>');
@@ -197,13 +225,18 @@ export function RenderCategoryEdit(){
             let name = $('<h1>');
             name.text(`${element.name}`);
             name.css({
-                'max-width':'70%',
+                'white-space':'nowrap',
+                'max-width':'67%',
+                'overflow':'hidden',
                 'position':'absolute',
                 'left':'16px',
-                'color':'#522a1f'
+                'color':'#522a1f',
+                'text-overflow':'ellipsis'
             });
             if(element.id == selectedcategories){
                 li.css({
+
+                    'white-space':'nowrap',
                     'background-color':'#884A39',
                     'border':'4px solid white'
                 });
@@ -225,10 +258,75 @@ export function RenderCategoryEdit(){
             li.click(function(){
                 selectedcategories = $(this).data('id');
                 RenderCategoryEdit();
-            })
-            
-             
+            })  
             lc.append(li);
         })
+
+        if(selectedcategories == undefined){
+            rc.css({
+                'font-size':'18px',
+                'color':'#884A39'
+            })
+            rc.text('Select an Category');
+        } else {
+            let editcontainer = $('<div>');
+            editcontainer.css({
+                'position':'relative',
+                'width':'100%',
+                'height':'60px',
+                'display':'flex',
+                'justify-content':'center',
+                'align-items':'center',
+                'gap':'16px'
+            })
+            let label = $('<span>');
+            label.text('Edit categories name');
+            label.css({
+                'position':'absolute',
+                'font-size':'16px',
+                'color':'#522a1f',
+                'top':'-16px',
+                'left':'32px'
+            })
+            editcontainer.append(label);
+            let editinp = $('<input>');
+            editinp.addClass('inp inp-full');
+            editinp.attr('placeholder','new category name...')
+            editcontainer.append(editinp);
+            let editbtn = $('<button>');
+            editbtn.attr('id','edit-btn');
+            editbtn.addClass('btn btn-small');
+            editbtn.text('Edit');
+            editbtn.click(function(){
+                let newname = editinp.val();
+                Edit.EditCategory(newname,selectedcategories);
+                RenderCategoryEdit();
+            })
+            editcontainer.append(editbtn);
+            rc.append(editcontainer);
+
+            let rmvcontainer = $('<div>');
+            rmvcontainer.css({
+                'width':'100%',
+                'height':'60px',
+                'display':'flex',
+                'justify-content':'center',
+                'align-items':'center',
+                'gap':'16px'
+            })
+            let rmvbtn = $('<button>');
+            rmvbtn.addClass('btn btn-full');
+            rmvbtn.click(() => {
+                Rmv.RemoveCategory(selectedcategories);
+                selectedcategories = undefined;
+                RenderCategoryEdit();
+            });
+            rmvbtn.text('Delete Categories');
+            rmvcontainer.append(rmvbtn);
+            rc.append(rmvcontainer);
+        }
+
+        
+
     }
 }
