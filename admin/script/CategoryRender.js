@@ -1,12 +1,13 @@
-import * as Add from "./CategoryAdd.js";
-import * as Rmv from "./CategoryRemove.js";
-import * as Edit from "./CategoryEdit.js";
+import * as Add from "./CategoryMethod/CategoryAdd.js";
+import * as Rmv from "./CategoryMethod/CategoryRemove.js";
+import * as Edit from "./CategoryMethod/CategoryEdit.js";
+
+import * as Pr from "./ProductRender.js";
 
 let panel = $('#main-panel');
 let selectedcategories;
 
 export function RenderCategoryList(){  
-
     // Render the header
     panel.empty();
     let title = $('<p>');    
@@ -164,10 +165,6 @@ export function RenderCategoryEdit(){
         })
 
     } else {
-        let header = $('<p>');
-        header.text(`Category count : ${data.length}`);
-        header.attr('id','content-header');
-        main.append(header);
         main.css({
             'flex-direction':'column'
         })
@@ -321,9 +318,29 @@ export function RenderCategoryEdit(){
                 selectedcategories = undefined;
                 RenderCategoryEdit();
             });
-            rmvbtn.text('Delete Categories');
+            rmvbtn.text('Delete Category');
             rmvcontainer.append(rmvbtn);
             rc.append(rmvcontainer);
+
+            let addcontainer = $('<div>');
+            addcontainer.css({
+                'width':'100%',
+                'height':'60px',
+                'display':'flex',
+                'justify-content':'center',
+                'align-items':'center',
+                'gap':'16px'
+            })
+
+            let addbtn = $('<button>');
+            addbtn.addClass('btn btn-full');
+            addbtn.click(() => {
+                Pr.RenderProductAdd();
+            });
+            addbtn.text('Add Product');
+            addcontainer.append(addbtn);
+            rc.append(addcontainer);
+        
         }
 
         

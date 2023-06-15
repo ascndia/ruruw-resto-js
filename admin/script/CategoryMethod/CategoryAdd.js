@@ -8,12 +8,13 @@ export function AddCategory(){
         alert("Please Fill Category Name");
         return;
     }
+
     $('#cadd-input').val("");
     let category = {};
     category.name = name;
     category.id = new Date().getTime();
     category.items = [];
     data.push(category);
-
     localStorage.setItem('menu',JSON.stringify(data));
+    alert('Category Added');
 }
