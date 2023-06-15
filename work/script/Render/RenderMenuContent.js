@@ -19,7 +19,7 @@ export function RenderMenuContent(selectedcategories){
         button.click(function(){
             let next = confirm('Proceed to Admin page?');
             if(next){
-                window.location.href="../../../admin/admin.html"
+                window.location.href="../../../ruruw-resto-js/admin/admin.html"
             } else {
                 alert('Operation canceled')
             }  
@@ -53,7 +53,7 @@ export function RenderMenuContent(selectedcategories){
                 button.click(function(){
                     let next = confirm('Proceed to Admin page?');
                     if(next){
-                        window.location.href="../../../admin/admin.html"
+                        window.location.href="../../../ruruw-resto-js/admin/admin.html"
                     } else {
                         alert('Operation canceled')
                     }  
