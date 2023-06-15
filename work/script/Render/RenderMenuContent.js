@@ -38,17 +38,54 @@ export function RenderMenuContent(selectedcategories){
     } else {
         if(selectedcategories == undefined){
 
-            data.forEach(e => e.items.forEach(a => {
-                let li = $('<div>');
-                li.addClass('menu-list');
-                li.attr('data-id',a.id);
-                li.text(a.name);
-                li.click(function(){
-                    Order.AddOrder(a.id);
-                })
-                body.append(li);
-
+            let total = 0;
+            data.forEach(i => i.items.forEach(o => {
+                total++;
             }))
+
+            if(total == 0){
+
+                var m = $('<p>');
+                m.text('Theres no items yet');
+                body.append($(m));
+
+                var button = $('<button>');
+                button.click(function(){
+                    let next = confirm('Proceed to Admin page?');
+                    if(next){
+                        window.location.href="../../../admin/admin.html"
+                    } else {
+                        alert('Operation canceled')
+                    }  
+                });
+                button.text('Add items in Admin page');
+                button.addClass('btn')
+                body.append(button);
+                body.css({
+                    'display':'flex',
+                    'gap':'16px',
+                    'flex-direction':'column',
+                    'justify-content':'center',
+                    'align-items':'center',
+                    'font-size': '1.2rem'
+                })
+
+            } else {
+
+                data.forEach(e => e.items.forEach(a => {
+                    let li = $('<div>');
+                    li.addClass('menu-list');
+                    li.attr('data-id',a.id);
+                    li.text(a.name);
+                    li.click(function(){
+                        Order.AddOrder(a.id);
+                    })
+                    body.append(li);
+    
+                }))
+
+            }
+            
         } else {
             let cat = data.find(a => a.id == selectedcategories);
             if(cat.items.length == 0){
